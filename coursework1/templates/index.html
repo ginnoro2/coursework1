@@ -1,0 +1,20 @@
+<html>
+  <head>
+    <title>Verification</title>
+
+    <link rel="stylesheet" media="all" href="https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.css" data-turbolinks-track="reload" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/authy-form-helpers/2.3/form.authy.min.js" data-turbolinks-track="reload"></script>
+  </head>
+
+  <body>
+    <h1>TO_GET_OTP</h1>
+
+    <form action='/getOTP' method="post">
+      <div>
+        <label for="phone_number">Phone number:</label>
+        <input type="text" name="number" placeholder="+977 * * *" />
+      </div>
+      <button type="submit">SEND</button>
+    </form>
+  </body>
+</html>
