@@ -11,6 +11,19 @@ app.secret_key = 'otp'#secret key session is written over cookies
 def home():
     return render_template('index.html')
 
+@app.route('/validate_username', methods=['POST'])
+def validate_username():
+    uname = request.form['username']
+    pwd = request.form['password']
+    print(uname)
+    conn = sqlite3.connect('student.db')
+    cursor = conn.cursor()
+    conn.execute("UPDATE ADMIN SET PASSWORD=? WHERE USERNAME=?", (pwd, uname))  
+    conn.commit() 
+    return redirect(url_for('get_db'))
+
+    conn.close()
+   
 @app.route('/get_db', methods=['GET'])
 def get_db():
     conn = sqlite3.connect('student.db')
@@ -23,6 +36,7 @@ def get_db():
 
     conn.close()
     return results
+
 
 #@app.route('/')
 def result():
