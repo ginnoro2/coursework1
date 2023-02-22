@@ -20,30 +20,32 @@ def validate_username():
     cursor = conn.cursor()
     conn.execute("UPDATE ADMIN SET PASSWORD=? WHERE USERNAME=?", (pwd, uname))  
     conn.commit() 
-    return redirect(url_for('get_db'))
+    return render_template('out.html')
 
     conn.close()
-   
-@app.route('/get_db', methods=['GET'])
-def get_db():
-    conn = sqlite3.connect('student.db')
-    cursor = conn.cursor()
-    cursor =  conn.execute('SELECT * FROM ADMIN')
-    results = cursor.fetchall()
-    print("ID\tUSERNAME\tPASSWORD")
-    for row in cursor:
-        print("{}\t{}\t{}".format(row[0], row[1], row[2]))
 
-    conn.close()
-    return results
+#--- This is a vulnerable code, which displays the contents of ADMIN table----
+#--- Not for use--------------------------------------------------------------
+#@app.route('/get_db', methods=['GET'])
+#def get_db():
+#    conn = sqlite3.connect('student.db')
+#    cursor = conn.cursor()
+#    cursor =  conn.execute('SELECT * FROM ADMIN')
+#    results = cursor.fetchall()
+#    print("ID\tUSERNAME\tPASSWORD")
+#    for row in cursor:
+#        print("{}\t{}\t{}".format(row[0], row[1], row[2]))
+
+#   conn.close()
+#   return results
 
 
 #@app.route('/')
-def result():
-    get = get_db()
-    print(get)
+#def result():
+#   get = get_db()
+#    print(get)
     
-    return render_template('out.html',usr=get)
+#    return render_template('out.html',usr=get)
 
 @app.route('/getOTP', methods = ['POST'])
 def getOTP():
@@ -59,8 +61,7 @@ def validateOTP():
         s= session['response']
         session.pop('response',None)
         if s == otp:
-            return redirect(url_for('get_db'))
-            
+            return render_template('user.html')
             
         else:
             return render_template('server.html')
@@ -70,7 +71,7 @@ def generateOTP():
 
 def getOTPApi(number):
     account_sid = 'ACc4ac69fcb07e679ef0d306f17c2fe316'
-    auth_token = 'c47bf426991792f2e2cdc15d39b4851c'
+    auth_token = 'c47bf426991792f2e2cdc15d39b4851c' # this token needs to be updated every 2 weeks.
     client = Client(account_sid, auth_token)
     otp = generateOTP()
     session['response'] = str(otp)
@@ -86,8 +87,10 @@ def getOTPApi(number):
         False
 
     print(message.sid)
-def term():
-    os.system('docker build -t testbuntu:latest .')
+    
+#this program terminates.
+#def term():
+#   os.system('docker build -t testbuntu:latest .')
 
 if __name__ == '__main__':
     app.run(debug=True)
