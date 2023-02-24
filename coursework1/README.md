@@ -12,6 +12,10 @@ putting all together and making it run.
 
 # Usage #
 ----------------------
+install docker 
+--https://docs.docker.com/desktop/install/mac-install/
+--docker pull ubuntu:latest
+
 pull from Github. 
 
 Then install requirements. 
