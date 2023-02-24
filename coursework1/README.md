@@ -12,7 +12,7 @@ putting all together and making it run.
 
 # Usage #
 ----------------------
-pull from docker. 
+pull from Github. 
 
 Then install requirements. 
 Some adjustments are required before running the application.
