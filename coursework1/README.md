@@ -44,4 +44,8 @@ Then install requirements.
 ```
 pip3 install -r requirements.txt
 ```
-Some adjustments are required before running the application.
+Use python3 to run the program 
+```
+python3 frontend.py
+```
+
