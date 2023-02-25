@@ -14,7 +14,11 @@ sudo docker images
 ```
 127.0.0.1:5000
 ```
-3. Sqlite3
+3. Sqlite3 ( Create Database ) 
+```
+python3 create_db.py
+python3 open_db.py
+```
 
 
 # Difficulties #
