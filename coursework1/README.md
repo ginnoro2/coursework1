@@ -17,6 +17,7 @@ sudo docker images
 3. Sqlite3 ( Create Database ) 
 ```
 python3 create_db.py
+python3 insert_db.py
 python3 open_db.py
 ```
 
