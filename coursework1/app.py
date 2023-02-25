@@ -71,7 +71,7 @@ def generateOTP():
 
 def getOTPApi(number):
     account_sid = 'ACc4ac69fcb07e679ef0d306f17c2fe316'
-    auth_token = 'c47bf426991792f2e2cdc15d39b4851c' # this token needs to be updated every 2 weeks.
+    auth_token = '6791e11339cefe0ed229c00519ea9139' # this token needs to be updated every 2 weeks.
     client = Client(account_sid, auth_token)
     otp = generateOTP()
     session['response'] = str(otp)
